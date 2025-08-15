@@ -7,21 +7,23 @@ import { useEffect, useState } from 'react';
 import type { MovieType } from './static/types.ts';
 
 function App() {
-  const [allData, setAllData] = useState<{ featured: MovieType; trendingNow: MovieType[] }>();
+  const [featuredData, setFeaturedData] = useState<MovieType>();
+  const [trendingNowData, setTrendingNowData] = useState<MovieType[]>();
 
   useEffect(() => {
-    apiService.getAllData().then((data: { featured: MovieType; trendingNow: MovieType[] }) => {
-      setAllData(data);
+    apiService.getAllData().then(({ featured, trendingNow }: { featured: MovieType; trendingNow: MovieType[] }) => {
+      setFeaturedData(featured);
+      setTrendingNowData(trendingNow);
     })
   }, []);
 
   return (
-    <div style={{ backgroundImage: `url(/images/${allData?.featured.CoverImage})`}} className="bg-cover bg-right flex h-screen">
+    <div className="flex h-screen">
       <Menu />
-      {allData &&
+      {featuredData && trendingNowData &&
         <main className="pl-[158px] h-screen flex flex-col overflow-y-auto w-full">
-          <Featured data={allData.featured} />
-          <TrendingNow data={allData.trendingNow} />
+          <Featured data={featuredData} />
+          <TrendingNow onSelect={(item: MovieType) => setFeaturedData(item)} data={trendingNowData} />
         </main>
       }
     </div>
