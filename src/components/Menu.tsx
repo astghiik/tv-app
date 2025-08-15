@@ -4,7 +4,6 @@ import iconShows from '../assets/icons/shows.png';
 import iconMovies from '../assets/icons/movies.png';
 import iconGenres from '../assets/icons/genres.png';
 import iconWatchLater from '../assets/icons/watch-later.png';
-import { useState } from 'react';
 
 const menuItems: { label: string; icon: string }[] = [
   { label: 'Search', icon: iconSearch },
@@ -16,25 +15,20 @@ const menuItems: { label: string; icon: string }[] = [
 ];
 
 function Menu() {
-  const [active, setActive] = useState<number>(1);
-
   return (
-    <aside className="h-screen overflow-y-auto p-8 fixed w-full">
-      <ul className="menu-ul flex flex-col gap-4 transition-all duration-300 w-[150px] group hover:w-[800px] hover:before:content-['']">
+    <aside className="p-9 fixed">
+      <ul className="menu-ul flex flex-col gap-4 transition-all duration-300 w-[78px] group hover:w-[270px] hover:before:content-['']">
         {menuItems.map((item: { label: string; icon: string }, i: number) => (
-          <li key={i}>
-            <button
-              onClick={() => setActive(i)}
-              type="button"
-              className={`w-full flex items-center gap-4 p-4 text-2xl rounded-xl transition-colors duration-300 cursor-pointer ${
-                active === i ? 'bg-primary' : ''
-              }`}
+          <li key={i} className="w-full">
+            <a
+              href="#"
+              className={`w-full flex items-center gap-13 p-6 text-2xl group-hover:rounded-xl rounded-full transition-colors duration-300 cursor-pointer ${i === 1 ? 'bg-primary' : ''}`}
             >
               <img src={item.icon} alt="" />
-              <span className="opacity-0 transition-opacity duration-300 group-hover:opacity-100 leading-0">
-            {item.label}
-          </span>
-            </button>
+              <span className="opacity-0 transition-opacity duration-300 group-hover:opacity-100 leading-0 whitespace-nowrap">
+                {item.label}
+              </span>
+            </a>
           </li>
         ))}
       </ul>

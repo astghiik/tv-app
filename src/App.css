@@ -1,5 +1,13 @@
+body {
+  background-color: #040404;
+}
+
+button {
+  cursor: pointer;
+}
+
 .menu-ul::before {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;

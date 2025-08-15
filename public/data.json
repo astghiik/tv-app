@@ -1,5 +1,5 @@
 {
-  "Featured": {
+  "featured": {
     "Id": "1",
     "Title": "The Irishman",
     "CoverImage": "FeaturedCoverImage.png",
@@ -11,7 +11,7 @@
     "Duration": "6000",
     "Description": "Info About it"
   },
-  "TendingNow": [
+  "trendingNow": [
     {
       "Id": "1",
       "Title": "Title 1",
