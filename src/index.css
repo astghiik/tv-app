@@ -23,4 +23,6 @@
   --color-gray: #858688;
   --color-white: #f1f1f1;
   --color-black: #0c0c0c;
+  --spacing-closed-menu: 150px;
+  --spacing-opened-menu: 340px;
 }

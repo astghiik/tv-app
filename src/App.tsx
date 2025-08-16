@@ -32,7 +32,7 @@ function App() {
     <div className="flex h-screen">
       <Menu />
       {featuredData && trendingNowData &&
-        <main className="pl-[158px] h-screen flex flex-col overflow-y-auto w-full">
+        <main className="pl-closed-menu h-screen flex flex-col overflow-y-auto w-full">
           <Featured data={featuredData} />
           <TrendingNow onSelect={(item: MovieType) => setFeaturedData(item)} data={trendingNowData} />
         </main>
