@@ -11,4 +11,3 @@ export type MovieType = {
   TitleImage?: string;
   VideoUrl?: string;
 };
-

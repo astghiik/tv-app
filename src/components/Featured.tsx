@@ -29,13 +29,12 @@ function Featured({ data }: Props) {
     <div className="h-full w-full py-16">
       <div className="absolute left-0 top-0 right-0 bottom-0 bg-cover bg-top-right -z-10" style={{backgroundImage: `url(/images/${data.CoverImage})`}}>
         {videoShow && (
-          <video ref={videoRef} autoPlay muted loop className="min-w-full min-h-full fixed">
+          <video ref={videoRef} autoPlay muted loop className="min-w-full min-h-full fixed object-cover">
             <source src={data.VideoUrl} type="video/mp4"/>
             Your browser does not support HTML5 video.
           </video>
         )}
       </div>
-
       <h1 className="text-gray uppercase font-semibold mb-4 text-2xl">{data.Category}</h1>
       {data.TitleImage ? <img src={`/images/${data.TitleImage}`} alt="" /> : <h2 className="text-7xl font-bold">{data.Title}</h2>}
       <div className="text-2xl mt-6">

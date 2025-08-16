@@ -32,8 +32,8 @@ function Menu() {
                 >
                   <img src={item.icon} alt="" />
                   <span className="opacity-0 transition-opacity duration-300 group-hover:opacity-100 leading-0 whitespace-nowrap">
-                {item.label}
-              </span>
+                    {item.label}
+                  </span>
                 </a>
               </li>
             ))}

@@ -18,7 +18,7 @@ function TrendingNow({ data, onSelect }: Props) {
       <h2 className="text-2xl mb-3">Trending Now</h2>
       <Carousel>
         {data.map((item: MovieType) => (
-          <button onClick={() => onItemSelect(item)} key={item.Id} type="button" className="block">
+          <button onClick={() => onItemSelect(item)} key={item.Id} type="button" className="block px-1">
             <img src={`images/${item.CoverImage}`} alt=""/>
           </button>
         ))}
