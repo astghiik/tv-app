@@ -2,7 +2,9 @@ import './App.css';
 import Menu from './components/Menu.tsx';
 import Featured from './components/Featured.tsx';
 import TrendingNow from './components/TrendingNow.tsx';
-import apiService from './services';
+import sortBy from './utils/sortBy.ts';
+import apiService from './services/api.ts';
+import storageService from './services/storage.ts';
 import { useEffect, useState } from 'react';
 import type { MovieType } from './static/types.ts';
 
@@ -13,7 +15,16 @@ function App() {
   useEffect(() => {
     apiService.getAllData().then(({ featured, trendingNow }: { featured: MovieType; trendingNow: MovieType[] }) => {
       setFeaturedData(featured);
-      setTrendingNowData(trendingNow);
+      const trendingOrder = storageService.getIdsOrder();
+
+      if (trendingOrder) {
+        const trendingView = sortBy(trendingNow, JSON.parse(trendingOrder), 'Id');
+        setTrendingNowData(trendingView.slice(0, 50));
+      } else {
+        const trendingView = trendingNow.sort((a: MovieType, b: MovieType) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
+        storageService.setIdsOrder(trendingView.map(item => item.Id));
+        setTrendingNowData(trendingView.slice(0, 50));
+      }
     })
   }, []);
 
